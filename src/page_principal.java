@@ -1,13 +1,12 @@
 import javax.swing.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
-public class page_principal{
+public class page_principal extends JFrame{
     private JPanel Panel2;
     private JTabbedPane tabbedPane1;
     private JPanel tab1;
@@ -43,6 +42,9 @@ public class page_principal{
     private JTextField ingreseSuAlturaTextField;
     private JButton calcularButton;
     private JLabel lblBMI;
+    private JTextArea textArea;
+    private JButton guardarButton;
+    private JTextField txtNombre;
 
 
     public page_principal(){
@@ -164,9 +166,23 @@ public class page_principal{
             }
         });
 
+        /*--------------------------------------------------------------------------------------------------------------------*/
 
 
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ingresoNombre();
+            }
+        });
     }//FIN DEL CONSTRUCTOR
+
+
+    public void ingresoNombre(){
+        textArea.setText("Tu nombre es: " + txtNombre.getText());
+    }
+
+
 
 
 
