@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,6 +46,10 @@ public class page_principal extends JFrame{
     private JTextArea textArea;
     private JButton guardarButton;
     private JTextField txtNombre;
+
+    private JLabel lblNOmbre;
+    private JScrollPane scroll1;
+
 
 
     public page_principal(){
@@ -175,6 +180,12 @@ public class page_principal extends JFrame{
                 ingresoNombre();
             }
         });
+
+        /*--------------------------------------------------------------------------------------------------------------------*/
+
+        ImageIcon img2 = new ImageIcon("src/imagenes/hombre.jpg");
+        scroll1.setViewportView( new JLabel(img2) );
+
     }//FIN DEL CONSTRUCTOR
 
 
