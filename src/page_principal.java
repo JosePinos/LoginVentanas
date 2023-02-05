@@ -49,11 +49,24 @@ public class page_principal extends JFrame{
 
     private JLabel lblNOmbre;
     private JScrollPane scroll1;
-
+    private JTextArea textArea_anything;
+    private JComboBox comboBox_color;
+    private JComboBox comboBox_size;
+    private JComboBox comboBox_font;
+    private JButton LOREMButton;
+    private JRadioButton RB_Makoto;
+    private JRadioButton RB_Ren;
+    private JRadioButton RB_Yu;
+    private JPanel Character;
+    private JPanel Weapon;
+    private JPanel Persona;
+    private String fuente;
+    private int incremento = 1;
 
 
     public page_principal(){
         /*-------------------------------------------------------*/
+
 
         suma.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -186,16 +199,165 @@ public class page_principal extends JFrame{
         ImageIcon img2 = new ImageIcon("src/imagenes/hombre.jpg");
         scroll1.setViewportView( new JLabel(img2) );
 
+        comboBox_color.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (comboBox_color.getSelectedItem().toString().equals("Azul"))
+                    textArea_anything.setForeground(Color.BLUE);
+                else if (comboBox_color.getSelectedItem().toString().equals("Rojo"))
+                    textArea_anything.setForeground(Color.RED);
+                else if(comboBox_color.getSelectedItem().toString().equals("Verde"))
+                    textArea_anything.setForeground(Color.GREEN);
+                else if (comboBox_color.getSelectedItem().toString().equals("Negro"))
+                    textArea_anything.setForeground(Color.BLACK);
+                else if(comboBox_color.getSelectedItem().toString().equals("Gris"))
+                    textArea_anything.setForeground(Color.GRAY);
+                else if(comboBox_color.getSelectedItem().toString().equals("Blanco"))
+                    textArea_anything.setForeground(Color.WHITE);
+            }
+        });
+        comboBox_font.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fuente = comboBox_font.getSelectedItem().toString();
+                if (fuente.equals("Times New Roman"))
+                    textArea_anything.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+                else if (fuente.equals("Calibri"))
+                    textArea_anything.setFont(new Font("Calibri", Font.PLAIN, 15));
+                else if (fuente.equals("Agency FB"))
+                    textArea_anything.setFont(new Font("Agency FB", Font.PLAIN, 15));
+            }
+        });
+
+        comboBox_size.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String incrementoSTR;
+
+                incrementoSTR = Integer.toString(incremento);
+                if (comboBox_size.getSelectedItem().toString().equals(incrementoSTR))
+                    textArea_anything.setFont(new Font("Calibri", Font.PLAIN, incremento));
+                else
+                {
+                    incremento++;
+                    while (incremento <= 20 && incremento != -1)
+                    {
+                        incrementoSTR = Integer.toString(incremento);
+                        if (comboBox_size.getSelectedItem().toString().equals(incrementoSTR))
+                        {
+                            textArea_anything.setFont(new Font("Calibri", Font.PLAIN, incremento));
+                            incremento = -1;
+                        }
+                        else
+                            incremento++;
+                    }
+                }
+            }
+        });
+        LOREMButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea_anything.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n" +
+                        "Praesent posuere eu odio rutrum rhoncus. \n" +
+                        "Phasellus eget auctor ante, quis bibendum tellus. In hac habitasse platea dictumst. \n" +
+                        "Aliquam tincidunt quam elementum vestibulum facilisis. \n" +
+                        "Nullam consequat ex ornare mauris sollicitudin sagittis. \n" +
+                        "Nullam at diam eu sapien hendrerit laoreet. \n" +
+                        "Nulla sodales ex in risus porta blandit at sit amet leo. \n" +
+                        "Curabitur aliquam molestie ipsum quis dapibus. \n" +
+                        "Nulla ac quam non erat vehicula maximus a a ipsum. \n" +
+                        "Vestibulum at velit ac mauris ultricies posuere.");
+            }
+        });
+        RB_Makoto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    if(RB_Makoto.isSelected() == true)
+                    {
+                        JLabel Personaje = new JLabel();
+                        JLabel Arma = new JLabel();
+                        JLabel PersonaS = new JLabel();
+                        Arma.setIcon(new ImageIcon("src/imagenes/MakotoWeapon.png"));
+                        PersonaS.setIcon(new ImageIcon("src/imagenes/Orpheus.png"));
+                        Personaje.setIcon(new ImageIcon("src/imagenes/makoto.png"));
+                        PersonaS.setBounds(10,20,900,224);
+                        Personaje.setBounds(25,50,684,890);
+                        Arma.setBounds(10,25,900,954);
+                        Character.setLayout(null);
+                        Weapon.setLayout(null);
+                        Persona.setLayout(null);
+                        Character.setLayout(null);
+                        Character.add(Personaje);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        });
+
+        RB_Ren.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    if(RB_Ren.isSelected() == true)
+                    {
+
+                        JLabel Personaje = new JLabel();
+                        JLabel Arma = new JLabel();
+                        JLabel PersonaS = new JLabel();
+                        Arma.setIcon(new ImageIcon("src/imagenes/JokerWeapon.png"));
+                        PersonaS.setIcon(new ImageIcon("src/imagenes/Arsene.png"));
+                        Personaje.setIcon(new ImageIcon("src/imagenes/Ren.png"));
+                        PersonaS.setBounds(10,20,350,377);
+                        Personaje.setBounds(25,50,396,906);
+                        Arma.setBounds(10,25,382,350);
+                        Character.setLayout(null);
+                        Weapon.setLayout(null);
+                        Persona.setLayout(null);
+                        Persona.add(PersonaS);
+                        Weapon.add(Arma);
+                        Character.add(Personaje);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        RB_Yu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+                    if(RB_Yu.isSelected() == true)
+                    {
+                        JLabel Personaje = new JLabel();
+                        JLabel Arma = new JLabel();
+                        JLabel PersonaS = new JLabel();
+                        Arma.setIcon(new ImageIcon("src/imagenes/YuWeapon.png"));
+                        PersonaS.setIcon(new ImageIcon("src/imagenes/Izanagi.png"));
+                        Personaje.setIcon(new ImageIcon("src/imagenes/Yu.png"));
+                        PersonaS.setBounds(0,20,512,487);
+                        Personaje.setBounds(0,0,845,800);
+                        Arma.setBounds(0,25,732,720);
+                        Character.setLayout(null);
+                        Weapon.setLayout(null);
+                        Persona.setLayout(null);
+                        Character.setLayout(null);
+                        Character.add(Personaje);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }//FIN DEL CONSTRUCTOR
-
-
     public void ingresoNombre(){
         textArea.setText("Tu nombre es: " + txtNombre.getText());
     }
-
-
-
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Principal");
