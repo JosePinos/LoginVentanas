@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -116,7 +117,7 @@ public class login_func {
                 FileReader leer;
                 BufferedReader almacenamiento;
                 String cadena;
-
+                int auxContador = 0;
                 archivo = new File("usuarios.txt");
 
                 try {
@@ -137,8 +138,15 @@ public class login_func {
                                 if(cadena.equals( (String) (txtusuarios.getText() + " " + txtcontrasenia.getText()) ) ){
                                     System.out.println("ESTE USUARIO EXISTE");
                                     JOptionPane.showMessageDialog(null, "Bienvenido de vuelta " +txtusuarios.getText() );
+                                    cadena = null;
+                                    page_principal pp = new page_principal(txtusuarios.getText());
+                                    pp.setContentPane(new page_principal(txtusuarios.getText()).Panel2);
+                                    pp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                    pp.pack();
+                                    pp.setVisible(true);
                                 }else{
                                     JOptionPane.showMessageDialog(null, "El usuario ingresado no existe" );
+
                                 }
                             }catch (NullPointerException exc){
                                 System.out.println(exc);

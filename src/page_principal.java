@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class page_principal extends JFrame{
-    private JPanel Panel2;
+    public JPanel Panel2;
     private JTabbedPane tabbedPane1;
     private JPanel tab1;
     private JPanel tab2;
@@ -64,10 +64,9 @@ public class page_principal extends JFrame{
     private int incremento = 1;
 
 
-    public page_principal(){
+    public page_principal(String dato){
         /*-------------------------------------------------------*/
-
-
+        lblNOmbre.setText(dato);
         suma.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -359,11 +358,13 @@ public class page_principal extends JFrame{
         textArea.setText("Tu nombre es: " + txtNombre.getText());
     }
 
-    public static void main(String[] args) {
+    /*
+    public static void main() {
         JFrame frame = new JFrame("Principal");
         frame.setContentPane( new page_principal().Panel2 );
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
+     */
 }//fin de la clase page_principal
