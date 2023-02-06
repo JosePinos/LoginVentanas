@@ -1,21 +1,22 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
 
-public class login_func {
+public class login_func extends JFrame{
     private JButton registrarseButton;
     private JButton iniciarSesiónButton;
     private JTextField txtusuarios;
     //private JTextField txtcontrasenia;
-    private JPanel Panel1;
+    public JPanel Panel1;
     private JLabel fotolabel;
     private JPasswordField txtcontrasenia;
     private JButton escogerFotoButton;
 
     //txtcontrasenia
-    public login_func() {
+    public login_func(ImageIcon imagen) {
 
         /*
         registrarseButton.addActionListener(new ActionListener() {
@@ -52,7 +53,6 @@ public class login_func {
             }
         });
         */
-
 
         registrarseButton.addActionListener(new ActionListener() {
             @Override
@@ -116,7 +116,7 @@ public class login_func {
                 FileReader leer;
                 BufferedReader almacenamiento;
                 String cadena;
-
+                int auxContador = 0;
                 archivo = new File("usuarios.txt");
 
                 try {
@@ -137,8 +137,16 @@ public class login_func {
                                 if(cadena.equals( (String) (txtusuarios.getText() + " " + txtcontrasenia.getText()) ) ){
                                     System.out.println("ESTE USUARIO EXISTE");
                                     JOptionPane.showMessageDialog(null, "Bienvenido de vuelta " +txtusuarios.getText() );
+                                    cadena = null;
+                                    page_principal pp = new page_principal(txtusuarios.getText(), imagen);
+                                    pp.imagenTraspaso(imagen);
+                                    pp.setContentPane(new page_principal(txtusuarios.getText(), imagen).Panel2);
+                                    pp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                    pp.pack();
+                                    pp.setVisible(true);
                                 }else{
                                     JOptionPane.showMessageDialog(null, "El usuario ingresado no existe" );
+
                                 }
                             }catch (NullPointerException exc){
                                 System.out.println(exc);
@@ -241,7 +249,8 @@ public class login_func {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Login");
-        frame.setContentPane( new login_func().Panel1 );
+        ImageIcon no = new ImageIcon();
+        frame.setContentPane( new login_func(no).Panel1 );
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
