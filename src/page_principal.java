@@ -64,9 +64,10 @@ public class page_principal extends JFrame{
     private int incremento = 1;
 
 
-    public page_principal(String dato){
+    public page_principal(String dato, ImageIcon imange){
         /*-------------------------------------------------------*/
         lblNOmbre.setText(dato);
+        scroll1.setViewportView( new JLabel(imange) );
         suma.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -195,8 +196,9 @@ public class page_principal extends JFrame{
 
         /*--------------------------------------------------------------------------------------------------------------------*/
 
+        /*
         ImageIcon img2 = new ImageIcon("src/imagenes/hombre.jpg");
-        scroll1.setViewportView( new JLabel(img2) );
+        scroll1.setViewportView( new JLabel(img2) );*/
 
         comboBox_color.addActionListener(new ActionListener() {
             @Override
@@ -354,10 +356,15 @@ public class page_principal extends JFrame{
             }
         });
     }//FIN DEL CONSTRUCTOR
+
     public void ingresoNombre(){
         textArea.setText("Tu nombre es: " + txtNombre.getText());
     }
 
+    public void imagenTraspaso(ImageIcon imagen)
+    {
+        scroll1.setViewportView( new JLabel(imagen) );
+    }
     /*
     public static void main() {
         JFrame frame = new JFrame("Principal");
