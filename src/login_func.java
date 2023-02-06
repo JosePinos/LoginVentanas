@@ -251,7 +251,8 @@ public class login_func extends JFrame{
         JFrame frame = new JFrame("Login");
         ImageIcon no = new ImageIcon();
         frame.setContentPane( new login_func(no).Panel1 );
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }

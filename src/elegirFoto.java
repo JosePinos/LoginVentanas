@@ -27,9 +27,11 @@ public class elegirFoto
                     lblImagenescogida.setIcon(icon);
                     login_func lf = new login_func(icon);
                     lf.setContentPane( new login_func(icon).Panel1 );
-                    lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    //lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    lf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     lf.pack();
                     lf.setVisible(true);
+
                 }
 
             }
